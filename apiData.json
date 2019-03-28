@@ -1,6 +1,6 @@
 {
     "baseUrl": "http://makeup-api.herokuapp.com/api/v1/products.json",
-    "productType": [
+    "productTypes": [
         {"id": "blush"},
         {"id": "bronzer"},
         {"id": "eyebrow"},
@@ -12,7 +12,7 @@
         {"id": "mascara"},
         {"id": "nail_polish"}
     ],
-    "productTag": [
+    "productTags": [
         {"id": "Canadian"},
         {"id": "CertClean"},
         {"id": "Chemical_Free"},
@@ -37,7 +37,7 @@
         {"id": "silicone_free"},
         {"id": "water_free"}
     ],
-    "brand": [
+    "brands": [
         {"id": "almay"},
         {"id": "anna sui"},
         {"id": "annabelle"},
