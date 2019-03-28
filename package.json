@@ -11,6 +11,8 @@
     "react": "16.8.3",
     "react-native": "0.59.2",
     "react-native-gesture-handler": "^1.1.0",
+    "react-native-navigation-drawer-layout": "0.0.6",
+    "react-native-off-canvas-menu": "^0.1.32",
     "react-navigation": "^3.5.1"
   },
   "devDependencies": {
