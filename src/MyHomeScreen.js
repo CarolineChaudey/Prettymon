@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import { Button, Picker, View } from 'react-native';
-import apiData from '../apiData.json';
-import MakeupSelectors from './MakeupSelectors';
+import { View } from 'react-native';
+import SearchMakeup from './SearchMakeup';
 
 export default class MyHomeScreen extends React.Component {
     static navigationOptions = {
@@ -15,7 +14,7 @@ export default class MyHomeScreen extends React.Component {
     render() {
       return (
         <View>
-            <MakeupSelectors />
+            <SearchMakeup />
         </View>
       );
     }
