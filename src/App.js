@@ -12,6 +12,8 @@ import MyHomeScreen from './MyHomeScreen';
 import MySecondScreen from './MySecondScreen';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 
+import DrawerScreen from './DrawerScreen';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -26,6 +28,10 @@ const MyDrawerNavigator = createDrawerNavigator({
   Second : {
     screen: MySecondScreen
   }
+}, {
+    initialRouteName: 'Home',
+    contentComponent: DrawerScreen,
+    drawerWidth: 300
 });
 
 export default App = createAppContainer(MyDrawerNavigator);
