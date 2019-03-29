@@ -14,10 +14,7 @@ class ButtonMenu extends Component {
 
   }
 
-
   render () {
-
-
      return (
        <Button
        buttonStyle={styles.buttonStyle}

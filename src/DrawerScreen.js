@@ -20,9 +20,10 @@ class DrawerScreen extends Component {
 
   }
 
-  navigateToScreen = (route) => () => {
+  navigateToScreen = (route, dataToSend) => () => {
       const navigateAction = NavigationActions.navigate({
-        routeName: route
+        routeName: route,
+        params : {productType: dataToSend}
       });
       this.props.navigation.dispatch(navigateAction);
       this.props.navigation.dispatch(DrawerActions.closeDrawer())
@@ -45,7 +46,7 @@ class DrawerScreen extends Component {
              <ThemeProvider>
              {
                 this.productType.map((item) => {
-                  return <Button buttonStyle={styles.buttonMenu} title={item.id} onPress={this.navigateToScreen('Second')}> </Button>
+                  return <Button buttonStyle={styles.buttonMenu} title={item.id} onPress={this.navigateToScreen('Second', item.id)}> </Button>
                 })
               }
               </ThemeProvider>
