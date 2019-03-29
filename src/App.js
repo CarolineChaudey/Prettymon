@@ -7,25 +7,43 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import MyHomeScreen from './MyHomeScreen';
+import {Platform} from 'react-native';
+import MyHomeScreen from './list/MyHomeScreen';
+import StartScreen from './MyHomeScreen';
 import MySecondScreen from './MySecondScreen';
-import {createDrawerNavigator, createAppContainer} from 'react-navigation';
+import DetailScreen from './DetailScreen';
+import {createDrawerNavigator,createStackNavigator, createAppContainer} from 'react-navigation';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import DrawerScreen from './DrawerScreen';
+
 
 const MyDrawerNavigator = createDrawerNavigator({
+    Start: {
+      screen: StartScreen
+    },
   Home: {
     screen: MyHomeScreen
-  },
-  Second : {
-    screen: MySecondScreen
   }
+}, {
+    initialRouteName: 'Start',
+    contentComponent: DrawerScreen,
+    drawerWidth: 300
 });
 
-export default App = createAppContainer(MyDrawerNavigator);
+const MyStackNavigator = createStackNavigator({
+  List: {
+    screen: MyDrawerNavigator,
+    navigationOptions: {
+                header: null
+    }
+  },
+  Detail: {
+    screen: DetailScreen
+  }
+}, {
+  initialRouteName: 'List'
+});
+
+
+
+export default App = createAppContainer(MyStackNavigator);
