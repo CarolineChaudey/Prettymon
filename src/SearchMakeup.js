@@ -19,19 +19,36 @@ export default class SearchMakeup extends Component {
     tagChanged(newTag) {
         this.setState({
             tag: newTag
+        }, () => {
+            this.searchResults()
         });
-        this.searchResults();
     }
 
     brandChanged(newBrand) {
         this.setState({
             brand: newBrand
+        }, () => {
+            this.searchResults()
         });
-        this.searchResults();
     }
 
     searchResults() {
-        fetch(apiData.baseUrl)
+        let url = apiData.baseUrl + '?';
+        let brand_option = undefined;
+        let tag_option = undefined;
+        if (this.state.brand)
+            brand_option = 'brand=' + this.state.brand;
+        if (this.state.tag)
+            tag_option = 'product_tags=' + this.state.tag;
+        if (brand_option && tag_option) {
+            url += brand_option + '&' + tag_option;
+        } else if (brand_option) {
+            url += brand_option;
+        } else if (tag_option) {
+            url += tag_option;
+        }
+
+        fetch(url)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
