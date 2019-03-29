@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text } from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
 import MakeupSelectors from './MakeupSelectors';
 import apiData from '../apiData.json';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
@@ -15,6 +15,7 @@ export default class SearchMakeup extends Component {
         this.tagChanged = this.tagChanged.bind(this);
         this.brandChanged = this.brandChanged.bind(this);
         this.state = {
+            isLoading: false,
             tag: undefined,
             brand: undefined,
             results: undefined
@@ -56,11 +57,15 @@ export default class SearchMakeup extends Component {
         });
         url += option_string;
 
+        this.setState({
+            isLoading: true
+        });
         fetch(url)
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
             this.setState({
+                isLoading: false,
                 results: data
             });
         })
@@ -87,6 +92,7 @@ export default class SearchMakeup extends Component {
     }
 
     render() {
+
         return (
             <View>
                 <MakeupSelectors
@@ -94,12 +100,19 @@ export default class SearchMakeup extends Component {
                     onBrandChange={this.brandChanged}
                 />
                 {
-                    this.state.results ?
-                    <FlatList
-                        data={this.state.results}
-                        renderItem={({item}) => this.renderLine(item)}
-                    />
-                    : <Text>No results</Text>
+                    (! this.state.isLoading  ?
+                        ( this.state.results ?
+                                <FlatList
+                                    data={this.state.results}
+                                    renderItem={({item}) => this.renderLine(item)}
+                                />
+                            :
+                                <Text>No results</Text>
+                        )
+
+                    :  <View style={{flex: 1, padding: 50}}>
+                            <ActivityIndicator size="large" color="#0000ff" />
+                        </View>)
                 }
             </View>
         );
