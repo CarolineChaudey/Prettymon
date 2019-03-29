@@ -36,17 +36,20 @@ export default class SearchMakeup extends Component {
         let url = apiData.baseUrl + '?';
         let brand_option = undefined;
         let tag_option = undefined;
+        let type_option = undefined;
         if (this.state.brand)
             brand_option = 'brand=' + this.state.brand;
         if (this.state.tag)
             tag_option = 'product_tags=' + this.state.tag;
-        if (brand_option && tag_option) {
-            url += brand_option + '&' + tag_option;
-        } else if (brand_option) {
-            url += brand_option;
-        } else if (tag_option) {
-            url += tag_option;
-        }
+        if (this.props.product_type)
+            type_option = 'product_type=' + this.props.product_type;
+        let options = [type_option, brand_option, tag_option];
+        let option_string ='';
+        options.map((value) => {
+            if (value)
+                option_string += value + '&';
+        });
+        url += option_string;
 
         fetch(url)
         .then((response) => response.json())
