@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { View, Text } from 'react-native';
 import MakeupSelectors from './MakeupSelectors';
 import apiData from '../apiData.json';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class SearchMakeup extends Component {
     constructor(props) {
@@ -68,13 +68,18 @@ export default class SearchMakeup extends Component {
 
     renderLine(item) {
         return (
-            <View style={{ padding: 5 }}>
+            <TouchableOpacity
+                style={{ padding: 5 }}
+                onPress={() => {
+                    console.log("CLICK");
+                }}
+            >
                 <Text>Brand : {item.brand}</Text>
                 <Text>Name : {item.name}</Text>
                 <Text>Category : {item.category}</Text>
                 <Text>type : {item.product_type}</Text>
                 <Text>price : {item.price} {item.price_sign}</Text>
-            </View>
+            </TouchableOpacity>
         );
     }
 
