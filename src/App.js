@@ -10,6 +10,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
 import MyHomeScreen from './MyHomeScreen';
 import MySecondScreen from './MySecondScreen';
+import DetailScreen from './DetailScreen';
 import {createDrawerNavigator, createAppContainer} from 'react-navigation';
 
 const instructions = Platform.select({
@@ -21,7 +22,7 @@ const instructions = Platform.select({
 
 const MyDrawerNavigator = createDrawerNavigator({
   Home: {
-    screen: MyHomeScreen
+    screen: DetailScreen
   },
   Second : {
     screen: MySecondScreen
