@@ -6,10 +6,12 @@ export default class FetchExample extends React.Component {
     constructor(props){
         super(props);
         this.state ={ isLoading: true}
+        console.log(props)
     }
 
     componentDidMount(){
-        return fetch('http://makeup-api.herokuapp.com/api/v1/products/1035.json')
+        return fetch(this.props.navigation.getParam('url' +
+            ''))
             .then((response) => response.json())
             .then((responseJson) => {
 

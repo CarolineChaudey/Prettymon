@@ -5,6 +5,11 @@ import apiData from '../apiData.json';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class SearchMakeup extends Component {
+
+    static propTypes = {
+        renderDetail: 'PropTypes.func'
+    }
+
     constructor(props) {
         super(props);
         this.tagChanged = this.tagChanged.bind(this);
@@ -66,13 +71,11 @@ export default class SearchMakeup extends Component {
         });
     }
 
-    renderLine(item) {
+    renderLine = (item) => {
         return (
             <TouchableOpacity
                 style={{ padding: 5 }}
-                onPress={() => {
-                    console.log("CLICK");
-                }}
+                onPress={() => this.props.renderDetail(item.product_api_url)}
             >
                 <Text>Brand : {item.brand}</Text>
                 <Text>Name : {item.name}</Text>
