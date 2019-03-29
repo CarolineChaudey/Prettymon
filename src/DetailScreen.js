@@ -1,7 +1,22 @@
 import React from 'react';
-import { ActivityIndicator, Text, View, Image, Linking, ScrollView  } from 'react-native';
+import { Dimensions, StyleSheet, ActivityIndicator, Text, View, Image, Linking, ScrollView } from 'react-native';
 
-export default class FetchExample extends React.Component {
+import { Button } from 'react-native-elements';
+
+export default class DetailScreen extends React.Component {
+
+  static navigationOptions = (params) => {
+     return {
+       title: params.navigation.getParam("name", "pas de nom"),
+       headerStyle: {
+       backgroundColor: '#bd2c2d',
+     },
+     headerTintColor: '#fff',
+     headerTitleStyle: {
+       fontWeight: 'bold',
+     },
+   }
+ };
 
     constructor(props){
         super(props);
@@ -10,6 +25,8 @@ export default class FetchExample extends React.Component {
     }
 
     componentDidMount(){
+
+
         return fetch(this.props.navigation.getParam('url'))
             .then((response) => response.json())
             .then((responseJson) => {
@@ -28,8 +45,8 @@ export default class FetchExample extends React.Component {
     }
 
 
-
     render(){
+
 
         if(this.state.isLoading){
             return(
@@ -40,18 +57,19 @@ export default class FetchExample extends React.Component {
         }
 
         const tagList = (this.state.dataSource.tag_list  && this.state.dataSource.tag_list ? this.state.dataSource.tag_list.map((tag)=> <Text style={{marginLeft: 10}}>{tag}</Text>): '');
+        console.log(this.state.dataSource.name)
 
         return(
-            <View style={{flex: 1, paddingTop:50}}>
+            <View style={styles.body}>
                 <Text> id :{ this.state.dataSource.id} </Text>
                 <Image
-                    style={{width: 100, height: 100}}
+                    style={styles.image}
                     source={{uri: this.state.dataSource.image_link}}
                 />
-                <Text style={{color: 'blue'}}
+                <Button title="Buy it" style={{color: 'blue'}}
                       onPress={() => Linking.openURL(this.state.dataSource.product_link)}>
-                    Buy it
-                </Text>
+
+                </Button>
                 <View style={{height: 100}} >
                     <ScrollView>
                         <Text>{this.state.dataSource.description}</Text>
@@ -59,10 +77,26 @@ export default class FetchExample extends React.Component {
                 </View>
                 <Text>Tag :</Text>
                 {tagList}
-
-
-
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+
+  body:{
+      alignItems: 'center',
+    height:Dimensions.get('window').height,
+    backgroundColor: "#fab1a0"
+  },
+  imageContainer:{
+  alignItems: 'center'
+  },
+  image:{
+    width:300,
+    height:300,
+
+  }
+
+
+});

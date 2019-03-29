@@ -38,7 +38,9 @@ const MyStackNavigator = createStackNavigator({
     }
   },
   Detail: {
-    screen: DetailScreen
+    screen: DetailScreen,
+
+
   }
 }, {
   initialRouteName: 'List'

@@ -82,7 +82,7 @@ export default class SearchMakeup extends Component {
         return (
             <TouchableOpacity
                 style={{ padding: 5 }}
-                onPress={() => this.props.renderDetail(item.product_api_url)}
+                onPress={() => this.props.renderDetail(item.product_api_url, item.brand)}
             >
                 <Text>Brand : {item.brand}</Text>
                 <Text>Name : {item.name}</Text>

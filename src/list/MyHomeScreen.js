@@ -20,10 +20,15 @@ export default class MyHomeScreen extends React.Component {
 
     }
 
-    renderDetail = (url) => {
-        this.props.navigation.push('Detail', {
-            url: url,
-        })
+    renderDetail = (url, name) => {
+      const params = {
+        url: url
+      }
+
+      if(name){
+        params.name = name
+      }
+        this.props.navigation.push('Detail', params)
     }
 
     render() {
