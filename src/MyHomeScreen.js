@@ -13,7 +13,7 @@ export default class MyHomeScreen extends React.Component {
     render() {
       return (
 
-          <Header/>
+          <Header navigation = {this.props.navigation}/>
 
       );
     }

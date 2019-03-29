@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import { Button, ThemeProvider, Icon} from 'react-native-elements';
 
+
+import {StyleSheet} from 'react-native';
+
+
 import DrawerScreen from './DrawerScreen';
 class ButtonMenu extends Component {
 
@@ -16,17 +20,27 @@ class ButtonMenu extends Component {
 
      return (
        <Button
+       buttonStyle={styles.buttonStyle}
+        onPress={ this.props.navigation.openDrawer}
+
         icon={
           <Icon
-            onPress={DrawerScreen.toggleDrawer}
+
             name="menu"
             size={30}
             color="white"
           />
         }
-
-      />
+        />
      );
    }
  }
+
+ const styles = StyleSheet.create({
+   buttonStyle: {
+     backgroundColor: "#bd2c2d"
+   }
+
+ });
+
 export default ButtonMenu;

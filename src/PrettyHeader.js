@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Button, ThemeProvider, Icon, Header} from 'react-native-elements';
 
+import {StyleSheet} from 'react-native';
 import MenuButton from './ButtonMenu';
 
 
@@ -18,7 +19,8 @@ class PrettyHeader extends Component {
      return (
        <ThemeProvider>
              <Header
-               leftComponent={<MenuButton/>}
+              containerStyle={styles.headerStyle}
+               leftComponent={<MenuButton navigation = {this.props.navigation} />}
                centerComponent={{ text: 'Prettymon', style: { color: '#fff' } }}
 
              />
@@ -28,4 +30,11 @@ class PrettyHeader extends Component {
      );
    }
  }
+
+ const styles = StyleSheet.create({
+   headerStyle: {
+     backgroundColor: "#bd2c2d"
+   }
+
+ });
 export default PrettyHeader;
