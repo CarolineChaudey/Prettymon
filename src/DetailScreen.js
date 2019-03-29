@@ -10,8 +10,7 @@ export default class FetchExample extends React.Component {
     }
 
     componentDidMount(){
-        return fetch(this.props.navigation.getParam('url' +
-            ''))
+        return fetch(this.props.navigation.getParam('url'))
             .then((response) => response.json())
             .then((responseJson) => {
 
@@ -53,7 +52,7 @@ export default class FetchExample extends React.Component {
                       onPress={() => Linking.openURL(this.state.dataSource.product_link)}>
                     Buy it
                 </Text>
-                <View style={{height: 50}} >
+                <View style={{height: 100}} >
                     <ScrollView>
                         <Text>{this.state.dataSource.description}</Text>
                     </ScrollView>

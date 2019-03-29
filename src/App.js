@@ -7,8 +7,8 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import MyHomeScreen from './MyHomeScreen';
+import {Platform} from 'react-native';
+import MyHomeScreen from './list/MyHomeScreen';
 import MySecondScreen from './MySecondScreen';
 import DetailScreen from './DetailScreen';
 import {createDrawerNavigator,createStackNavigator, createAppContainer} from 'react-navigation';

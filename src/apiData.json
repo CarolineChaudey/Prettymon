@@ -13,6 +13,7 @@
         {"id": "nail_polish"}
     ],
     "productTags": [
+        {"id": ""},
         {"id": "Canadian"},
         {"id": "CertClean"},
         {"id": "Chemical_Free"},
@@ -38,6 +39,7 @@
         {"id": "water_free"}
     ],
     "brands": [
+        {"id": ""},
         {"id": "almay"},
         {"id": "anna sui"},
         {"id": "annabelle"},
