@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Picker, View, Text } from 'react-native';
-import apiData from '../apiData.json';
+import apiData from '../data/apiData.json';
 
 export default class MakeupSelectors extends Component {
 

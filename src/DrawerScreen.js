@@ -6,7 +6,7 @@ import { DrawerActions } from 'react-navigation';
 
 import { Button, ThemeProvider} from 'react-native-elements';
 
-import apiData from '../apiData.json';
+import apiData from './data/apiData.json';
 
 
 class DrawerScreen extends Component {
@@ -15,7 +15,7 @@ class DrawerScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.productType = apiData.productType;
+    this.productType = apiData.productTypes;
 
 
   }
@@ -46,7 +46,7 @@ class DrawerScreen extends Component {
              <ThemeProvider>
              {
                 this.productType.map((item) => {
-                  return <Button buttonStyle={styles.buttonMenu} title={item.id} onPress={this.navigateToScreen('Second', item.id)}> </Button>
+                  return <Button buttonStyle={styles.buttonMenu} title={item.id} onPress={this.navigateToScreen('Home', item.id)}> </Button>
                 })
               }
               </ThemeProvider>

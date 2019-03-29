@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { View } from 'react-native';
 import SearchMakeup from './SearchMakeup';
+import apiData from "../data/apiData";
 
 export default class MyHomeScreen extends React.Component {
 
@@ -14,6 +15,7 @@ export default class MyHomeScreen extends React.Component {
 
     constructor(props) {
         super(props);
+
     }
 
     renderDetail = (url) => {
@@ -23,10 +25,18 @@ export default class MyHomeScreen extends React.Component {
     }
   
     render() {
+
+        const { navigation } = this.props;
+
+        const productType = navigation.getParam('productType', 'no-id');
+        console.log('toto');
+        console.log(productType);
+
       return (
         <View>
             <SearchMakeup
-                renderDetail={this.renderDetail}
+                productType = {productType}
+                renderDetail = {this.renderDetail}
             />
         </View>
       );

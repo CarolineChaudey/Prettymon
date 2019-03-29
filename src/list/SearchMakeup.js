@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 import MakeupSelectors from './MakeupSelectors';
-import apiData from '../apiData.json';
+import apiData from '../data/apiData.json';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class SearchMakeup extends Component {
 
     static propTypes = {
+        productType: 'PropTypes.string',
         renderDetail: 'PropTypes.func'
     }
 
@@ -43,12 +44,14 @@ export default class SearchMakeup extends Component {
         let brand_option = undefined;
         let tag_option = undefined;
         let type_option = undefined;
+
+        console.log(this.props.productType);
         if (this.state.brand)
             brand_option = 'brand=' + this.state.brand;
         if (this.state.tag)
             tag_option = 'product_tags=' + this.state.tag;
-        if (this.props.product_type)
-            type_option = 'product_type=' + this.props.product_type;
+        if (this.props.productType)
+            type_option = 'product_type=' + this.props.productType;
         let options = [type_option, brand_option, tag_option];
         let option_string ='';
         options.map((value) => {
@@ -63,7 +66,6 @@ export default class SearchMakeup extends Component {
         fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
             this.setState({
                 isLoading: false,
                 results: data

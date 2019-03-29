@@ -9,6 +9,7 @@
 import React, {Component} from 'react';
 import {Platform} from 'react-native';
 import MyHomeScreen from './list/MyHomeScreen';
+import StartScreen from './MyHomeScreen';
 import MySecondScreen from './MySecondScreen';
 import DetailScreen from './DetailScreen';
 import {createDrawerNavigator,createStackNavigator, createAppContainer} from 'react-navigation';
@@ -17,14 +18,14 @@ import DrawerScreen from './DrawerScreen';
 
 
 const MyDrawerNavigator = createDrawerNavigator({
+    Start: {
+      screen: StartScreen
+    },
   Home: {
     screen: MyHomeScreen
-  },
-  Second : {
-    screen: MySecondScreen
   }
 }, {
-    initialRouteName: 'Home',
+    initialRouteName: 'Start',
     contentComponent: DrawerScreen,
     drawerWidth: 300
 });
