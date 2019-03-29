@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
-import { Button } from 'react-native';
+
+import { Header, Button, ThemeProvider} from 'react-native-elements';
 
 export default class MyHomeScreen extends React.Component {
     static navigationOptions = {
       drawerLabel: 'Home'
     };
-  
+
     render() {
       return (
-        <Button
-          // onPress={() => this.props.navigation.navigate('Notifications')}
-          title="Go to notifications"
-        />
+
+        <ThemeProvider>
+              <Header
+                leftComponent={{ icon: 'menu', color: '#fff' }}
+                centerComponent={{ text: 'Prettymon', style: { color: '#fff' } }}
+                rightComponent={{ icon: 'home', color: '#fff' }}
+              />
+            <Button title="Hey!" />
+        </ThemeProvider>
+
       );
     }
   }
