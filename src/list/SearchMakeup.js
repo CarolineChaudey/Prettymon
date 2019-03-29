@@ -105,6 +105,10 @@ export default class SearchMakeup extends Component {
                     (! this.state.isLoading  ?
                         ( this.state.results ?
                                 <FlatList
+                                    style={{
+                                        margin: 10,
+                                        maxHeight: '65%'
+                                    }}
                                     data={this.state.results}
                                     renderItem={({item}) => this.renderLine(item)}
                                 />
