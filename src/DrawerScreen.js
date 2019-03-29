@@ -1,59 +1,83 @@
 import React, {Component} from 'react';
 import {NavigationActions} from 'react-navigation';
 
-import {ScrollView, Button, View, StyleSheet} from 'react-native';
+import {ScrollView, View, StyleSheet, Text, Dimensions, Image} from 'react-native';
 import { DrawerActions } from 'react-navigation';
+
+import { Button, ThemeProvider} from 'react-native-elements';
 
 import apiData from '../apiData.json';
 
 
 class DrawerScreen extends Component {
-  navigateToScreen = (route) => {
 
 
-    this.productTags = apiData.productTags;
-      console.log(apiData.productTags)
-    }
+  constructor(props) {
+    super(props);
+
+    this.productType = apiData.productType;
+
+
+  }
+
+  navigateToScreen = (route) => () => {
+      const navigateAction = NavigationActions.navigate({
+        routeName: route
+      });
+      this.props.navigation.dispatch(navigateAction);
+      this.props.navigation.dispatch(DrawerActions.closeDrawer())
 }
+
 
   render () {
-    return (
-      <View>
-        <ScrollView>
-          <View style={styles.container}>
-            <View>
 
-            </View>
 
-            <View >
-              <Button title="Second" onPress={this.navigateToScreen('Second')}>
-              </Button>
-            </View>
-          </View>
-        </ScrollView>
-      </View>
-    );
-  }
-}
+     return (
+       <View style={styles.menuStyle}>
+         <ScrollView >
+
+
+
+            <Image style={styles.header} source={require('../assets/makupHeader.jpg')}>
+
+            </Image>
+
+             <ThemeProvider>
+             {
+                this.productType.map((item) => {
+                  return <Button buttonStyle={styles.buttonMenu} title={item.id} onPress={this.navigateToScreen('Second')}> </Button>
+                })
+              }
+              </ThemeProvider>
+         </ScrollView>
+       </View>
+     );
+   }
+ }
+
 
 const styles = StyleSheet.create({
-  container: {
-    height:100,
-    backgroundColor: '#fab1a0',
-  },
+
   header: {
-    width:100,
-  },
-  welcome: {
-    fontSize: 20,
+    alignSelf: 'stretch',
     textAlign: 'center',
-    margin: 10,
+    height:150,
+    width:300,
   },
-  instructions: {
+  menuStyle: {
+    height: Dimensions.get('window').height,
+    backgroundColor: "#bd2c2d"
+  },
+  buttonMenu: {
+    alignSelf: 'stretch',
     textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    height:100,
+    marginTop:10,
+    borderRadius:0,
+    backgroundColor:"#d63031"
+  }
+
+
 });
 
 export default DrawerScreen;
